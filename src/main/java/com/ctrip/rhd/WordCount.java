@@ -28,6 +28,7 @@ public class WordCount {
 
 
     }
+    //asdflk
     //自定义myflatmap类,实现FlatMapFunction接口
     public static class MyFlatMapper implements FlatMapFunction<String, Tuple2<String,Integer>>{
         public void flatMap(String value, Collector<Tuple2<String, Integer>> out) throws Exception {
