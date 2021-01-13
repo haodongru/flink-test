@@ -7,6 +7,7 @@ import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.util.Collector;
 
+//doubi
 // 批处理wordcount
 public class WordCount {
     public static void main(String[] args) throws Exception {
