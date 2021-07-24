@@ -15,6 +15,8 @@ public class SourceTest_UDF {
 
         env.setParallelism(1);
 
+
+
         //自定义数据源
         DataStreamSource<SensorReading> sss = env.addSource(new MySensorFuntion());
 
