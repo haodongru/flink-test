@@ -20,9 +20,9 @@ public class KaToKa {
 
 
         Properties properties = new Properties();
-        properties.setProperty("bootstrap.servers","hadoop200:9092");
+        properties.setProperty("bootstrap.servers","centos-03:9092");
         //从kafka读取数据
-        DataStreamSource<String> outPut = env.addSource(new FlinkKafkaConsumer011<String>("fisb", new SimpleStringSchema(), properties));
+        DataStreamSource<String> outPut = env.addSource(new FlinkKafkaConsumer011<String>("first", new SimpleStringSchema(), properties));
 
 
 
@@ -37,7 +37,7 @@ public class KaToKa {
         });
 
         //sink输出 方法
-        output.addSink(new FlinkKafkaProducer011<String>("hadoop200:9092", "sb", new SimpleStringSchema()));
+        output.addSink(new FlinkKafkaProducer011<String>("centos-03:9092", "final", new SimpleStringSchema()));
 
 
 
