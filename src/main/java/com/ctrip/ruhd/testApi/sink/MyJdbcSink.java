@@ -24,6 +24,7 @@ public class MyJdbcSink extends RichSinkFunction<Tuple2<String,Double>> {
 
         //设置预编译语句
         insertStatement = connection.prepareStatement("insert into sensor_reading (id,temp) values (?,?)");
+        System.out.println(insertStatement.toString());
         updateStatement = connection.prepareStatement("update sensor_reading set temp = ? where id=?");
 
 
@@ -40,6 +41,7 @@ public class MyJdbcSink extends RichSinkFunction<Tuple2<String,Double>> {
     public void invoke(Tuple2<String,Double> value, Context context) throws Exception {
         updateStatement.setDouble(1,value.f1);
         updateStatement.setString(2,value.f0);
+        System.out.println("update:"+updateStatement);
         updateStatement.execute();
         if(updateStatement.getUpdateCount() == 0){
             insertStatement.setString(1,value.f0);
