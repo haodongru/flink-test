@@ -29,7 +29,7 @@ public class WindowTest_TimeWindow {
         String inputPath = "E:\\IdeaProjects\\flink\\src\\main\\resources\\hello.txt";*/
 
         //读取文件内容，放入inputDataStream里面
-        DataStream<String> inputDataStream = env.socketTextStream("hadoop200",7777);
+        DataStream<String> inputDataStream = env.socketTextStream("centos-03",7777);
 
         //把读取到的数据封装成sensorReading类型
 
@@ -45,7 +45,7 @@ public class WindowTest_TimeWindow {
 
                 //时间滚动窗口，滑动窗口传2个参数
                 .timeWindow(Time.seconds(10))
-                //结束窗口，滑动同理
+                //计数窗口，滑动同理
 //                .countWindow(15)
                 //时间会话窗口
 //                .window(EventTimeSessionWindows.withGap(Time.seconds(30)))
@@ -121,8 +121,9 @@ public class WindowTest_TimeWindow {
                     }
                 });
 
-        myAggregateResuleStream.print();
-//        resultStream2.print();
+//        myAggregateResuleStream.print();
+        resultStream2.print();
+//        resultStream.print("resultStream:");
 
 
 

@@ -68,6 +68,10 @@ public class TransformTest_MultiplieStreams {
         });
         streamOperator.print();
 
+        //union 合多条流，流的类型必须相同
+        DataStream<SensorReading> unionStream = high.union(map,low);
+        unionStream.print("union:");
+
         env.execute();
 
     }
